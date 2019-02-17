@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>hello vue</title>
+    </head>
+    <body>
+        <div id="myapp">
+            <p>{{message}}</p>
+            <button v-on:click="reverseMessage">Click me</button>
+            <input v-model="message" />
+            <ul>
+                <li v-for="item in txtList">
+                    {{item.txt}}
+                </li>
+            </ul>
+        </div>
+        <div id="app2">
+            <ol>
+                <todo-item v-for="item in txtList" v-bind:todo="item" v-bind:key="item.txt"></todo-item>
+            </ol>
+        </div>
+    </body>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>这是个待办项{{todo.txt}}</li>'
+        });
+        var app2 = new Vue({
+            el:"#app2",
+            data:{
+                txtList:[
+                    {txt:"txt1"},
+                    {txt:"txt2"},
+                    {txt:"txt3"}
+                ]
+            },
+            created: function(){
+                alert('hello created')
+            }
+        })
+        var app = new Vue({
+            el: '#myapp',
+            data:{
+                message:"hello my vue",
+                txtList:[
+                    {txt:"method1"},
+                    {txt:"method2"},
+                    {txt:"method3"}
+                ]
+            },methods:{
+                reverseMessage:function () {
+                    //alert(this.message)
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        });
+    </script>
+</html>

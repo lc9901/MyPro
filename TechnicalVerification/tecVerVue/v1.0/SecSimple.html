@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            vue2demo
+        </title>
+    </head>
+    <body>
+        <div id="app1">
+            <p :title="demoTitle" :name="demoName" @click="doPClick">Click me</p>
+            <p>{{nu}}</p>
+            <p>{{nu + 1}}</p>
+            <p>{{comNu}}</p>
+            <p :style="styleList">{{comNu}}</p>
+
+
+        </div>
+    </body>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app1',
+            data:{
+                demoTitle: 'demos',
+                demoName: 'demoname',
+                nu:3,
+                styleList:{
+                    color: 'red'
+                }
+            },
+            computed:{
+                comNu:function(){
+                    return this.nu * Math.PI;
+                }
+            },
+            methods:{
+                doPClick: function(){
+                    alert("This dom was clicked");
+                }
+            }
+        });
+    </script>
+</html>
