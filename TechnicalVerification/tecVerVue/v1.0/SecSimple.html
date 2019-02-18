@@ -12,7 +12,9 @@
             <p>{{nu + 1}}</p>
             <p>{{comNu}}</p>
             <p :style="styleList">{{comNu}}</p>
-
+            <p><span>姓</span><input type="text" v-model="t_xin"/></p>
+            <p><span>名</span><input type="text" v-model="t_ming"/></p>
+            <p><span>姓名</span><input type="text" v-model="t_fullname"/></p>
 
         </div>
     </body>
@@ -26,11 +28,25 @@
                 nu:3,
                 styleList:{
                     color: 'red'
-                }
+                },
+                t_xin : "陈",
+                t_ming: "鸿鹏",
+                t_fullname : ''
             },
             computed:{
                 comNu:function(){
                     return this.nu * Math.PI;
+                },
+                // t_fullname :function(){
+                //     return this.t_xin + " "+ this.t_ming;
+                // }
+            },
+            watch:{
+                t_xin :function (n, o){
+                    this.t_fullname = this.t_xin + " "+ this.t_ming;
+                },
+                t_ming: function(n, o){
+                    this.t_fullname = this.t_xin + " "+ this.t_ming;
                 }
             },
             methods:{

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>component DEMO</title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <!-- simple component -->
+        <div>
+            <com-demo1 id="app1"></com-demo1>
+            <field-item id="app2"></field-item>
+        </div>
+        <div id="user-info">
+        </div>
+    </body>
+    <script>
+        Vue.component('com-demo1',{
+            data:function (){
+                return { count : 0 };
+            },
+            template:'<button v-on:click="count++">{{count}}</button>'
+        });
+        Vue.component('field-item',{
+            // data:function (){
+            //    return {
+            //     fidTitle: this.,
+            //     fidValue: ""
+            //    }
+            // },
+            props:['fidTitle', 'fidValue'],
+            template:'<p><span>{{fidTitle}}</span><input v-model="fidValue"/></p>'
+        });
+        Vue.component(
+            'user-info-card',{
+                data : function(){
+                    return 0;
+                },
+                template: '<p><span></span><input /></p>'
+            }
+        );
+        new Vue({
+            el:"#app1",
+            data:{
+                count : 0
+            }
+        });
+        new Vue({
+            el:"#app2",
+            data:{
+                fidTitle: "姓名",
+                fidValue: "Asher Chen"
+            }
+        });
+    </script>
+</html>

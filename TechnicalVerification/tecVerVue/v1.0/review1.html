@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Review 2019-02-17</title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app1">
+            <p>{{message}}</p>
+            <div>
+                <p v-for="item in txtList">
+                    <span>{{item.txtTitle}}</span>
+                    <span>{{item.txtBody}}</span>
+                </p>
+            </div>
+            <button v-on:click="testMethod">click</button>
+        </div>
+    </body>
+    <script>
+        var vm1 = new Vue({
+            el:"#app1",
+            data:{
+                message :  "hello world 展示信息",
+                txtList : [
+                    {
+                        txtTitle : "c#",
+                        txtBody : "A Dot Net Language"
+                    },{
+                        txtTitle:"Java",
+                        txtBody: "A kind of jvm Language"
+                    },{
+                        txtTitle:"Python",
+                        txtBody: "A kind of script language"
+                    }]
+            },
+            methods:{
+                testMethod: function(){
+                    alert(" method invoke");
+                }
+            }
+        });
+
+
+    </script>
+</html>
